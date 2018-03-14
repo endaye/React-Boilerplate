@@ -11,35 +11,37 @@
 </head>
 <body>
 
-	<div id="container"></div>
-	
-	<script type="text/babel">
+<div id="container"></div>
 
-		var Comment = React.createClass({
-            edit: function () {
-                alert("Editing comment");
-            },
-            remove: function () {
-                alert("Removing comment");
-            },
-            render: function () {
-                return (
-                    <div className="commentContainer">
-                        <div className="commentText">{this.props.children}</div>
-                        <button onClick={this.edit} className="button-primary">Edit</button>
-                        <button onClick={this.remove} className="button-danger">Remove</button>
-                    </div>
-                );
+<script type="text/babel">
+    var CheckBox = React.createClass({
+        getInitialState: function () {
+            return {checked: true};
+        },
+        handleChecked: function() {
+            this.setState({checked: !this.state.checked});
+        },
+        render:function (){
+            var msg;
+            if (this.state.checked) {
+                msg = 'checked';
+            } else {
+                msg = 'unchecked';
             }
-        });
+            return (
+                    <div>
+                        <input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked}/>
+                        <h3>Checkbox is {msg}</h3>
+                    </div>
+            );
+        }
+    });
 
-		ReactDOM.render(
-		    <div className="board">
-                <Comment>Hey now</Comment>
-                <Comment>Bean</Comment>
-                <Comment>Tuna</Comment>
+    ReactDOM.render(
+            <div>
+                <CheckBox/>
             </div>
-		    , document.getElementById('container'));
-	</script>
+        , document.getElementById('container'));
+</script>
 </body>
 </html>
