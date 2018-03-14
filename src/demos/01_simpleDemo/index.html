@@ -13,7 +13,17 @@
 	<div id="example"></div>
 	
 	<script type="text/babel">
-		ReactDOM.render(<h1>Endaye</h1>, document.getElementById('example'));
+
+		var Bacon = React.createClass({
+			render: function() {
+				return (<h3>This is a simple component!</h3>);
+			}
+		});
+		ReactDOM.render(<div>
+            <Bacon />
+            <Bacon />
+            <Bacon />
+        </div>, document.getElementById('example'));
 	</script>
 </body>
 </html>
